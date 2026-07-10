@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Préstamos rápidos para latinos en Estados Unidos. Aprobación rápida, sin tantos requisitos y atención personalizada."/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="theme-color" content="#14347B"/>
+  <title>Crédito Boricua – Préstamos para la Comunidad Latina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0033A0;
+      --navy2:   #002080;
+      --gold:    #CC0001;
+      --gold2:   #a30001;
+      --white:   #ffffff;
+      --offwhite:#F7F8FC;
+      --gray:    #6B7280;
+      --light:   #E8EDF8;
+      --text:    #1C2340;
+      --red:     #CC0001;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,51,160,.4);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: .5px;
+    }
+    .logo span { color: var(--white); }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    nav ul a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      font-weight: 700 !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--gold2) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy2) 0%, var(--navy) 60%, #CC0001 100%);
+      color: var(--white);
+      padding: 90px 5% 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(204,0,1,.1);
+      top: -200px; right: -150px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
+      bottom: -100px; left: 10%;
+    }
+    .hero-text { flex: 1; min-width: 280px; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.85);
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: .95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.5);
+      color: var(--white);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: 12px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(204,0,1,.15); }
+
+    .hero-stats {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 20px 28px;
+      backdrop-filter: blur(8px);
+      text-align: center;
+      min-width: 170px;
+    }
+    .stat-card .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-card .lbl {
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      margin-top: 4px;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      background: var(--offwhite);
+      padding: 70px 5%;
+      text-align: center;
+    }
+    .section-label {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feat-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px 24px;
+      box-shadow: 0 2px 16px rgba(0,51,160,.07);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,51,160,.13); }
+    .feat-icon {
+      width: 54px; height: 54px;
+      background: var(--light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 18px;
+    }
+    .feat-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .feat-card p {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 70px 5%;
+      text-align: center;
+      background: var(--white);
+    }
+    .steps {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step {
+      flex: 1;
+      min-width: 180px;
+      padding: 24px 20px;
+      position: relative;
+    }
+    .step-num {
+      width: 48px; height: 48px;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+    }
+    .step h3 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .step p { font-size: .84rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── FORM ── */
+    #formulario {
+      background: linear-gradient(160deg, var(--offwhite) 0%, #e4eaf7 100%);
+      padding: 80px 5%;
+    }
+    #formulario .section-title { text-align: center; }
+    #formulario .section-label { text-align: center; }
+
+    .form-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 48px 5%;
+      max-width: 780px;
+      margin: 40px auto 0;
+      box-shadow: 0 4px 40px rgba(0,51,160,.1);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: .3px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #d0d8ea;
+      border-radius: 8px;
+      font-size: .93rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fafbfd;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(0,51,160,.1);
+      background: var(--white);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2314347B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+
+    .form-divider {
+      grid-column: 1 / -1;
+      height: 1px;
+      background: var(--light);
+      margin: 8px 0;
+    }
+    .form-section-title {
+      grid-column: 1 / -1;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-top: 8px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 28px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      letter-spacing: .3px;
+    }
+    .submit-btn:hover { background: var(--navy2); transform: translateY(-2px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    .form-note {
+      text-align: center;
+      font-size: .78rem;
+      color: var(--gray);
+      margin-top: 14px;
+    }
+
+    /* ── SUCCESS MESSAGE ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .success-msg .checkmark {
+      width: 72px; height: 72px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      margin: 0 auto 20px;
+    }
+    .success-msg h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .success-msg p { color: var(--gray); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 32px 5%;
+      font-size: .84rem;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .form-section-title { grid-column: 1; }
+      .form-divider { grid-column: 1; }
+      nav ul { display: none; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { min-width: 130px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Crédito <span>Boricua</span></div>
+  <ul>
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#formulario" class="nav-cta">Solicitar ahora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-badge">🇵🇷 Comunidad Latina</span>
+    <h1>Préstamos rápidos<br/>para <em>tu familia</em><br/>y tus sueños</h1>
+    <p>En Crédito Boricua entendemos tu situación. Accede a fondos en tiempo récord, con atención personalizada y sin complicaciones.</p>
+    <div class="hero-btns">
+      <a href="#formulario" class="btn-primary">Solicitar mi préstamo</a>
+      <a href="#como-funciona" class="btn-outline">Cómo funciona</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="num">24h</div>
+      <div class="lbl">Aprobación rápida</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">$500–$25K</div>
+      <div class="lbl">Montos disponibles</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">100%</div>
+      <div class="lbl">En línea y seguro</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="beneficios">
+  <div class="section-label">¿Por qué elegirnos?</div>
+  <h2 class="section-title">Todo lo que necesitas,<br/>sin complicaciones</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <h3>Aprobación rápida</h3>
+      <p>Recibe una respuesta en menos de 24 horas, sin esperas interminables.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <h3>Pocos requisitos</h3>
+      <p>Sin historial crediticio perfecto. Te evaluamos como persona, no solo como número.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🤝</div>
+      <h3>Atención en español</h3>
+      <p>Nuestro equipo habla tu idioma y comprende tus necesidades culturales.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <h3>100% seguro</h3>
+      <p>Tu información personal está protegida con encriptación de nivel bancario.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como-funciona">
+  <div class="section-label">Proceso simple</div>
+  <h2 class="section-title">En 3 pasos tienes tu dinero</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Completa el formulario</h3>
+      <p>Llena tu solicitud en línea en menos de 5 minutos.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Revisamos tu caso</h3>
+      <p>Nuestro equipo evalúa tu solicitud de forma rápida y personalizada.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Recibe tu dinero</h3>
+      <p>Una vez aprobado, los fondos llegan directo a tu cuenta bancaria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="formulario">
+  <div class="section-label">Solicitud en línea</div>
+  <h2 class="section-title">Comienza tu solicitud hoy</h2>
+
+  <div class="form-card">
+    <div id="form-content">
+      <form id="loanForm" novalidate>
+        <div class="form-grid">
+
+          <!-- Información personal -->
+          <div class="form-section-title">Información Personal</div>
+
+          <div class="form-group">
+            <label for="nombres">Nombres *</label>
+            <input type="text" id="nombres" name="nombres" placeholder="Tu nombre" required/>
+          </div>
+          <div class="form-group">
+            <label for="apellidos">Apellidos *</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required/>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Número de teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="787-000-0000" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="estado_civil">Estado civil</label>
+            <select id="estado_civil" name="estado_civil">
+              <option value="">Selecciona...</option>
+              <option>Soltero/a</option>
+              <option>Casado/a</option>
+              <option>Divorciado/a</option>
+              <option>Viudo/a</option>
+              <option>Unión libre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profesion">Profesión</label>
+            <input type="text" id="profesion" name="profesion" placeholder="Tu ocupación"/>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- Ubicación -->
+          <div class="form-section-title">Ubicación</div>
+
+          <div class="form-group">
+            <label for="pais">País *</label>
+            <select id="pais" name="pais" required>
+              <option value="">Selecciona...</option>
+              <option>Puerto Rico</option>
+              <option>Estados Unidos</option>
+              <option>México</option>
+              <option>República Dominicana</option>
+              <option>Colombia</option>
+              <option>Venezuela</option>
+              <option>Cuba</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ciudad">Ciudad *</label>
+            <input type="text" id="ciudad" name="ciudad" placeholder="Tu ciudad" required/>
+          </div>
+          <div class="form-group">
+            <label for="codigo_postal">Código postal</label>
+            <input type="text" id="codigo_postal" name="codigo_postal" placeholder="00000"/>
+          </div>
+          <div class="form-group">
+            <label for="distrito">Distrito / Estado</label>
+            <input type="text" id="distrito" name="distrito" placeholder="Distrito o estado"/>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- Solicitud -->
+          <div class="form-section-title">Detalles del Préstamo</div>
+
+          <div class="form-group">
+            <label for="monto">Monto solicitado *</label>
+            <select id="monto" name="monto" required>
+              <option value="">Selecciona...</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $3,000</option>
+              <option>$3,000 – $5,000</option>
+              <option>$5,000 – $10,000</option>
+              <option>$10,000 – $25,000</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tiempo_reembolso">Tiempo de reembolso</label>
+            <select id="tiempo_reembolso" name="tiempo_reembolso">
+              <option value="">Selecciona...</option>
+              <option>6 meses</option>
+              <option>12 meses</option>
+              <option>24 meses</option>
+              <option>36 meses</option>
+              <option>48 meses</option>
+              <option>60 meses</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ingreso_mensual">Ingreso mensual</label>
+            <input type="text" id="ingreso_mensual" name="ingreso_mensual" placeholder="$0,000"/>
+          </div>
+          <div class="form-group">
+            <label for="banco">Nombre del banco</label>
+            <input type="text" id="banco" name="banco" placeholder="Tu banco"/>
+          </div>
+          <div class="form-group full">
+            <label for="motivo">Motivo de la solicitud *</label>
+            <textarea id="motivo" name="motivo" placeholder="¿Para qué necesitas el préstamo? (educación, salud, negocio...)" required></textarea>
+          </div>
+
+        </div><!-- /form-grid -->
+
+        <button type="submit" class="submit-btn">✉️ &nbsp;Enviar mi solicitud</button>
+        <p class="form-note">🔒 Tu información es confidencial y nunca será compartida con terceros.</p>
+      </form>
+    </div>
+
+    <!-- Success -->
+    <div class="success-msg" id="successMsg">
+      <div class="checkmark">✅</div>
+      <h3>¡Solicitud recibida!</h3>
+      <p>Gracias por contactarnos. Nuestro equipo revisará tu solicitud y te contactará en menos de 24 horas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Crédito Boricua</strong> &nbsp;·&nbsp; Préstamos para la Comunidad Latina</p>
+  <p style="margin-top:8px;">© 2025 Crédito Boricua. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  document.getElementById('loanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      if (!el.value.trim()) {
+        el.style.borderColor = 'var(--red)';
+        valid = false;
+      } else {
+        el.style.borderColor = '#d0d8ea';
+      }
+    });
+    if (!valid) return;
+
+    // Build WhatsApp message
+    const nombres         = document.getElementById('nombres').value;
+    const apellidos       = document.getElementById('apellidos').value;
+    const telefono        = document.getElementById('telefono').value;
+    const email           = document.getElementById('email').value;
+    const estado_civil    = document.getElementById('estado_civil').value;
+    const profesion       = document.getElementById('profesion').value;
+    const pais            = document.getElementById('pais').value;
+    const ciudad          = document.getElementById('ciudad').value;
+    const codigo_postal   = document.getElementById('codigo_postal').value;
+    const distrito        = document.getElementById('distrito').value;
+    const monto           = document.getElementById('monto').value;
+    const tiempo          = document.getElementById('tiempo_reembolso').value;
+    const ingreso         = document.getElementById('ingreso_mensual').value;
+    const banco           = document.getElementById('banco').value;
+    const motivo          = document.getElementById('motivo').value;
+
+    const msg = `🏦 *NUEVA SOLICITUD – CRÉDITO BORICUA*
+
+👤 *Información Personal*
+• Nombre: ${nombres} ${apellidos}
+• Teléfono: ${telefono}
+• Email: ${email}
+• Estado civil: ${estado_civil}
+• Profesión: ${profesion}
+
+📍 *Ubicación*
+• País: ${pais}
+• Ciudad: ${ciudad}
+• Código postal: ${codigo_postal}
+• Distrito: ${distrito}
+
+💰 *Detalles del Préstamo*
+• Monto solicitado: ${monto}
+• Tiempo de reembolso: ${tiempo}
+• Ingreso mensual: ${ingreso}
+• Banco: ${banco}
+
+📝 *Motivo:* ${motivo}`;
+
+    const phone = '13438555624';
+    const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+
+    document.getElementById('form-content').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('formulario').offsetTop - 80, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
